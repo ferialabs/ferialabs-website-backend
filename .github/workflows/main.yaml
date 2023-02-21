@@ -1,0 +1,29 @@
+name: Continuous Integration and Delivery
+
+on: [push]
+        
+jobs:
+  build:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    env:
+      DO_DOCKER_REGISTRY_NAME: registry.digitalocean.com
+      DO_DOCKER_IMAGE_NAME: registry.digitalocean.com/eggslist-container/ferialabs-backend
+    steps:
+      - name: Login to Artifact Registry
+        id: docker-do-login
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.DO_DOCKER_REGISTRY_NAME }}
+          username: ${{ secrets.DO_ACCESS_TOKEN }}
+          password: ${{ secrets.DO_ACCESS_TOKEN }}
+
+      - name: Update Backend image in Digital Ocean Artifact Registry
+        id: docker-push-pytorch-tagged
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          file: ./Dockerfile
+          secrets: ENV_SECRETS=${{ secrets.ENV_B64 }}
+          tags: |
+            ${{ env.DO_DOCKER_IMAGE_NAME }}:latest
