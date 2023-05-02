@@ -12,7 +12,11 @@ init_db()
 config = context.config
 
 section = config.config_ini_section
-config.set_section_option(section=section, name="SQLALCHEMY_DATABASE_URL", value=settings.SQLALCHEMY_DATABASE_URI)
+config.set_section_option(
+    section=section,
+    name="SQLALCHEMY_DATABASE_URL",
+    value=settings.SQLALCHEMY_DATABASE_URI,
+)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -69,9 +73,7 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

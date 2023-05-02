@@ -14,4 +14,3 @@ class Project(db.Base):
 
     def __repr__(self):
         return self.title
-

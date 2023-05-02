@@ -25,4 +25,3 @@ def init_db() -> sqlalchemy.orm.scoped_session:
     import ferialabs.db.models  # noqa
 
     return db_session
-

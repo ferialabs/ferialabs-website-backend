@@ -12,6 +12,6 @@ flask_application.config.from_object(settings)
 # Mount FastAPI with Flask in admin sub index
 fastapi_application.mount("/admin", WSGIMiddleware(flask_application))
 
-from ferialabs import db # noqa
+from ferialabs import db  # noqa
 from ferialabs import api  # noqa
-from ferialabs import admin # noqa
+from ferialabs import admin  # noqa

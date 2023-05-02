@@ -46,12 +46,12 @@ class BasicHTTPAuthMixin:
         return True
 
 
-
 class FerialabsAdminIndexView(BasicHTTPAuthMixin, AdminIndexView):
     """
     Index Page for the project Admin dashboard.
     Inherits a Basic HTTP protection rule from `BasicHTTPAuthMixin`
     """
+
 
 class FerialabsAdminModelView(BasicHTTPAuthMixin, ModelView):
     """
@@ -70,5 +70,6 @@ admin = Admin(
     template_mode="bootstrap3",
     index_view=FerialabsAdminIndexView(url="/"),
 )
-admin.add_view(PortfolioProjectAdminView(models.Project, db_session, name="Portfolio Project"))
-
+admin.add_view(
+    PortfolioProjectAdminView(models.Project, db_session, name="Portfolio Project")
+)

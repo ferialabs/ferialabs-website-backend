@@ -16,11 +16,10 @@ def verify_password(username: str, password: str) -> str:
     :param password:  Admin password
     :return:
     """
-    if username == settings.ADMIN_BASIC_AUTH_USER.get("username") and password == settings.ADMIN_BASIC_AUTH_USER.get(
-        "password"
-    ):
+    if username == settings.ADMIN_BASIC_AUTH_USER.get(
+        "username"
+    ) and password == settings.ADMIN_BASIC_AUTH_USER.get("password"):
         return username
 
 
 import ferialabs.admin.views  # noqa
-

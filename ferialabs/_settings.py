@@ -7,11 +7,12 @@ from pydantic import BaseSettings
 dotenv.load_dotenv(dotenv_path=".env")
 ENV_TYPE = os.environ.get("ENVIRONMENT")
 
+
 class EnvironmentSettings(BaseSettings):
     SECRET_KEY: str
-    DB_HOST:str =  os.environ.get("DB_HOST")
-    DB_PORT:str = os.environ.get("DB_PORT")
-    DB_USER:str = os.environ.get("DB_USER")
+    DB_HOST: str = os.environ.get("DB_HOST")
+    DB_PORT: str = os.environ.get("DB_PORT")
+    DB_USER: str = os.environ.get("DB_USER")
     DB_NAME: str = os.environ.get("DB_NAME")
     DB_PASSWORD: str = os.environ.get("DB_PASSWORD")
     SQLALCHEMY_DATABASE_URI: str = f"postgresql+pg8000://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
@@ -22,7 +23,6 @@ class EnvironmentSettings(BaseSettings):
         "password": _FLASK_BASIC_AUTH_PASSWORD,
     }
     FLASK_ADMIN_SWATCH: str = "flatly"
-
 
     class Config:
         env_file = ".env"
