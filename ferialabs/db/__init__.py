@@ -1,7 +1,7 @@
 import sqlalchemy.orm
 from sqlalchemy.orm import declarative_base, scoped_session, sessionmaker
-
 from ferialabs import settings
+
 
 engine = sqlalchemy.create_engine(
     url=settings.SQLALCHEMY_DATABASE_URI,
