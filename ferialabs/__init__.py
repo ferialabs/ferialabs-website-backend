@@ -7,3 +7,4 @@ elif _settings.ENV_TYPE == "production":
     settings = _settings.ProductionSettings()
 else:
     settings = _settings.DevelopmentSettings()
+
